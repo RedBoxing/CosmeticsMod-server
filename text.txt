@@ -1,0 +1,28 @@
+Cosmetics:
+    - identifier
+    - name
+    - display name
+    - comsetic pack id
+    - data (available settings)
+
+CosmeticsPacks
+    - identifier
+    - url
+    - hash
+    - publisher
+    - cosmetics
+User:
+    - uuid
+    - username
+    - token
+
+
+
+
+GET /api/users/:uuid
+POST /api/users/:uuid (take the user's token as parameter to update user's settings)
+
+
+
+host a minecraft server to link account (using the same way as the discord bot)
+generate a token for the user to allow the user to edit his cosmetics in-game
