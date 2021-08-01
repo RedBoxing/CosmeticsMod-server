@@ -6,8 +6,6 @@ import jwt from 'jsonwebtoken'
 import passport from "passport";
 import bcrypt from 'bcrypt'
 
-import * as logger from '../../utils/logger'
-
 export class AuthController {
     authenticateJWT(req: Request, res: Response, next: NextFunction) {
         passport.authenticate("jwt", (err, user, info) => {
@@ -61,7 +59,6 @@ export class AuthController {
     
     login(req : Request, res : Response, next: NextFunction) {  
         if(req.body.username === undefined && req.body.password === undefined && req.headers.authorization !== undefined) {
-            console.log(req.headers)
             passport.authenticate('jwt', (err, user, token) => {
                 if(err) {
                     return res.status(401).json({
