@@ -16,6 +16,9 @@ export class CosmeticData extends Model {
     @Column
     user_id!: number;
 
+    @BelongsTo(() => User, { foreignKey: 'user_id'})
+    user!: User;
+
     @Column(DataType.JSON)
     data?: any;
 }
