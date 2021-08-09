@@ -44,7 +44,7 @@ export class UserController {
         
                 json.cosmetics.push({
                     id: cosmetic.cosmetic.identifier,
-                    data: cosmetic.data
+                    data: JSON.parse(cosmetic.data)
                 });
             }
         
