@@ -14,6 +14,6 @@ export class CosmeticsPack extends Model {
     @BelongsTo(() => User, 'publisher_id')
     publisher!: User;
 
-    @HasMany(() => Cosmetic)
+    @HasMany(() => Cosmetic, 'id')
     cosmetics!: Cosmetic[];
 }
