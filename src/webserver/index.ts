@@ -1,7 +1,7 @@
 import express, { Express } from 'express'
 import bodyParser from 'body-parser'
 import fileUpload from 'express-fileupload'
-import https from 'http'
+import https from 'https'
 import fs from 'fs'
 import passport from 'passport'
 import session from 'express-session'
@@ -40,10 +40,10 @@ export class WebServer {
         this.app.use(new PackRoutes().router);
         this.app.use(new AuthRoutes().router);
 
-        this.server = https.createServer(/*{
+        this.server = https.createServer({
             key: fs.readFileSync(process.env.SSL_PRIVATE_KEY as string, 'utf8'),
             cert: fs.readFileSync(process.env.SSL_CERTIFICATE as string, 'utf8')
-        },*/ this.app);
+        }, this.app);
     }
 
     run() {
