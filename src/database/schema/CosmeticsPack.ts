@@ -11,9 +11,9 @@ export class CosmeticsPack extends Model {
     @Column
     publisher_id!: number;
 
-    @BelongsTo(() => User, { foreignKey: 'publisher_id' })
+    @BelongsTo(() => User, 'publisher_id')
     publisher!: User;
 
-    @HasMany(() => Cosmetic, { foreignKey: 'cosmetics_pack_id' })
+    @HasMany(() => Cosmetic, 'cosmetics_pack_id')
     cosmetics!: Cosmetic[];
 }

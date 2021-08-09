@@ -9,14 +9,14 @@ export class CosmeticData extends Model {
     @Column({ unique: true })
     cosmetic_id!: number;
 
-    @BelongsTo(() => Cosmetic, { foreignKey: 'cosmetic_id' })
+    @BelongsTo(() => Cosmetic, 'cosmetic_id')
     cosmetic!: Cosmetic;
 
     @ForeignKey(() => User)
     @Column
-    user_id!: number;
+    userId!: number;
 
-    @BelongsTo(() => User, { foreignKey: 'user_id'})
+    @BelongsTo(() => User, 'userId')
     user!: User;
 
     @Column(DataType.JSON)

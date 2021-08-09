@@ -23,6 +23,7 @@ export class UserController {
                 cosmetics: Array()
             }
 
+            console.log(user);
 
             user.cosmetics.forEach(async cosmetic => {
                 if(!json.cosmetics_packs.find(p => p.id === cosmetic.cosmetic.cosmetics_pack_id)) {

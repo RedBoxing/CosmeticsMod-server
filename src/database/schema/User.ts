@@ -14,6 +14,6 @@ export class User extends Model {
     @Column
     password!: string;
 
-    @HasMany(() => CosmeticData, { foreignKey: 'user_id' })
+    @HasMany(() => CosmeticData, 'user_id')
     cosmetics!: CosmeticData[];
 }
