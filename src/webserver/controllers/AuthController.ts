@@ -138,7 +138,7 @@ export class AuthController {
             uuid: req.body.uuid,
             username: req.body.username,
             password: hashedPassword,
-            cosmetics: Array<Cosmetic>()
+            cosmetics: Array<CosmeticData>()
         });
 
         const token = jwt.sign({

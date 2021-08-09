@@ -99,7 +99,7 @@ export class PackController {
                     const pack = await CosmeticsPack.create({
                         //@ts-expect-error
                         path: payload.path + fileExtension,
-                        publisher: req.user
+                        publisher: req.user as User,
                     });
     
                     const cosmetics : Array<Cosmetic> = await this.parseCosmeticsPack(pack);
