@@ -5,8 +5,7 @@ import { User } from './User';
 @Table
 export class CosmeticData extends Model {
     @ForeignKey(() => Cosmetic)
-    @Unique
-    @Column
+    @Column({ unique: true })
     cosmetic_id!: number;
 
     @BelongsTo(() => Cosmetic, 'cosmetic_id')
