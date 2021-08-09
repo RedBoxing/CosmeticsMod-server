@@ -13,7 +13,4 @@ export class User extends Model {
 
     @Column
     password!: string;
-
-    @BelongsToMany(() => Cosmetic, () => CosmeticData)
-    cosmetics!: Cosmetic[]
 }

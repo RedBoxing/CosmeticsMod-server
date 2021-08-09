@@ -13,7 +13,7 @@ export class UserController {
             where: {
                 uuid: uuid
             }
-        }).then(user => {
+        }).then(async user => {
             if(!user) {
                 return res.json({});
             }
@@ -22,26 +22,26 @@ export class UserController {
                 cosmetics_packs: Array<any>(),
                 cosmetics: Array()
             }
-    
-            user.cosmetics.forEach(async cosmetic => {
-                if(!json.cosmetics_packs.find(p => p.id === cosmetic.cosmetics_pack_id)) {
-                    json.cosmetics_packs.push({
-                        id: cosmetic.cosmetics_pack_id,
-                        hash: await fileHash(cosmetic.cosmetics_pack.path)
-                    });
+
+            CosmeticData.findAll({
+                where: {
+                    user_id: user.id
                 }
-    
-                CosmeticData.findOne({
-                    where: {
-                        user_id: user.id
+            }).then(cosmetics_data => {
+                cosmetics_data.forEach(async cosmetic => {
+                    if(!json.cosmetics_packs.find(p => p.id === cosmetic.cosmetic.cosmetics_pack_id)) {
+                        json.cosmetics_packs.push({
+                            id: cosmetic.cosmetic.cosmetics_pack_id,
+                            hash: await fileHash(cosmetic.cosmetic.cosmetics_pack.path)
+                        });
                     }
-                }).then(cosmetic_data => {
+
                     json.cosmetics.push({
-                        id: cosmetic.identifier,
-                        data: cosmetic_data?.data
+                        id: cosmetic.cosmetic.identifier,
+                        data: cosmetic?.data
                     });
-                }) 
-            });
+                })
+            })
     
             res.json(json);
         })

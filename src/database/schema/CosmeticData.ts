@@ -1,4 +1,4 @@
-import { Model, Table, Column, ForeignKey, DataType } from 'sequelize-typescript';
+import { Model, Table, Column, ForeignKey, DataType, BelongsTo } from 'sequelize-typescript';
 import { Cosmetic } from './Cosmetic';
 import { User } from './User';
 
@@ -7,6 +7,9 @@ export class CosmeticData extends Model {
     @ForeignKey(() => Cosmetic)
     @Column
     cosmetic_id!: number;
+
+    @BelongsTo(() => Cosmetic)
+    cosmetic!: Cosmetic;
 
     @ForeignKey(() => User)
     @Column
