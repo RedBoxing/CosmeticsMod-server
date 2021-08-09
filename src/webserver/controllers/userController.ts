@@ -13,7 +13,7 @@ export class UserController {
             where: {
                 uuid: uuid
             }
-        }).then(async user => {
+        }).then(user => {
             if(!user) {
                 return res.json({});
             }
@@ -28,6 +28,10 @@ export class UserController {
                     user_id: user.id
                 }
             }).then(cosmetics_data => {
+                if(!cosmetics_data) {
+                    return res.json(json);
+                }
+
                 cosmetics_data.forEach(async cosmetic => {
                     if(!json.cosmetics_packs.find(p => p.id === cosmetic.cosmetic.cosmetics_pack_id)) {
                         json.cosmetics_packs.push({
@@ -41,9 +45,9 @@ export class UserController {
                         data: JSON.parse(cosmetic.data)
                     });
                 })
+
+                res.json(json);
             })
-    
-            res.json(json);
         })
     }
     
