@@ -1,9 +1,9 @@
 import { Request, Response } from "express";
 import { CosmeticData } from "../../database/schema/CosmeticData";
 import { User } from "../../database/schema/User";
-
-import crypto from 'crypto'
 import { fileHash } from "../../utils/utils";
+
+import * as logger from '../../utils/logger';
 
 export class UserController {
     async show(req : Request, res : Response) {
@@ -29,10 +29,12 @@ export class UserController {
                 }
             }).then(cosmetics_data => {
                 if(!cosmetics_data) {
-                    return res.json(json);
+                    return res.json({});
                 }
-
+                
+                console.log("cosmetics_data: " + cosmetics_data);
                 cosmetics_data.forEach(async cosmetic => {
+                    console.log("cosmetics: " + cosmetic);
                     if(!json.cosmetics_packs.find(p => p.id === cosmetic.cosmetic.cosmetics_pack_id)) {
                         json.cosmetics_packs.push({
                             id: cosmetic.cosmetic.cosmetics_pack_id,
@@ -42,7 +44,7 @@ export class UserController {
 
                     json.cosmetics.push({
                         id: cosmetic.cosmetic.identifier,
-                        data: JSON.parse(cosmetic.data)
+                        data: cosmetic.data
                     });
                 })
 
