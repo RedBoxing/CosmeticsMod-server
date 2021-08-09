@@ -7,16 +7,16 @@ export class CosmeticData extends Model {
     @AllowNull(false)
     @ForeignKey(() => Cosmetic)
     @Column({ unique: true })
-    cosmetic_id!: number;
+    cosmeticId!: number;
 
-    @BelongsTo(() => Cosmetic, 'cosmetic_id')
+    @BelongsTo(() => Cosmetic)
     cosmetic!: Cosmetic;
 
     @ForeignKey(() => User)
     @Column
     userId!: number;
 
-    @BelongsTo(() => User, 'userId')
+    @BelongsTo(() => User)
     user!: User;
 
     @Column(DataType.JSON)

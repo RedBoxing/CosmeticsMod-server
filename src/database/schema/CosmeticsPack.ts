@@ -9,11 +9,11 @@ export class CosmeticsPack extends Model {
 
     @ForeignKey(() => User)
     @Column
-    publisher_id!: number;
+    publisherId!: number;
 
-    @BelongsTo(() => User, 'publisher_id')
+    @BelongsTo(() => User)
     publisher!: User;
 
-    @HasMany(() => Cosmetic, 'cosmetics_pack_id')
+    @HasMany(() => Cosmetic)
     cosmetics!: Cosmetic[];
 }

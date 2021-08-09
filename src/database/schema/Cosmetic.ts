@@ -14,8 +14,8 @@ export class Cosmetic extends Model {
 
     @ForeignKey(() => CosmeticsPack)
     @Column
-    cosmetics_pack_id!: number;
+    cosmetics_packId!: number;
 
-    @BelongsTo(() => CosmeticsPack, 'cosmetics_pack_id')
+    @BelongsTo(() => CosmeticsPack)
     cosmetics_pack!: CosmeticsPack;
 }
