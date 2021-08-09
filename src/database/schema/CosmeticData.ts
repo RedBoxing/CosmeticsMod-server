@@ -4,10 +4,6 @@ import { User } from './User';
 
 @Table
 export class CosmeticData extends Model {
-    @PrimaryKey
-    @Column
-    data_id!: number;
-
     @ForeignKey(() => Cosmetic)
     @Column
     cosmetic_id!: number;
