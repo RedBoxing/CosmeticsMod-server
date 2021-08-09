@@ -2,6 +2,7 @@ import express, { Express } from 'express'
 import bodyParser from 'body-parser'
 import fileUpload from 'express-fileupload'
 import https from 'https'
+import http from 'http'
 import fs from 'fs'
 import passport from 'passport'
 
@@ -14,7 +15,7 @@ import * as logger from '../utils/logger'
 
 export class WebServer {
     private app: Express = express();
-    private server: https.Server;
+    private server: http.Server;
 
     constructor() {
         this.app.set('trust proxy', true);
@@ -40,13 +41,15 @@ export class WebServer {
         this.app.use(new AuthRoutes().router);
 
        // if(process.env.USE_SSL === true) {
-            this.server = https.createServer({
+           /* this.server = https.createServer({
                 key: fs.readFileSync(process.env.SSL_PRIVATE_KEY as string, 'utf8'),
                 cert: fs.readFileSync(process.env.SSL_CERTIFICATE as string, 'utf8')
-            }, this.app);
+            }, this.app);*/
       /*  } else {
             this.server = https.createServer(this.app);
         }*/
+
+        this.server = http.createServer(this.app);
     }
 
     run() {

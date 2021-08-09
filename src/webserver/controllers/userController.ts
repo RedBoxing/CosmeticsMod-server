@@ -24,7 +24,7 @@ export class UserController {
                     ]
                 }
             ]
-        }).then(user => {
+        }).then(async user => {
             if(!user) {
                 return res.json({});
             }
@@ -34,20 +34,20 @@ export class UserController {
                 cosmetics: Array()
             }
 
-            user.cosmetics.forEach(async cosmetic => {
+            for(const cosmetic of user.cosmetics) {
                 if(!json.cosmetics_packs.find(p => p.id === cosmetic.cosmetic.cosmetics_packId)) {
                     json.cosmetics_packs.push({
                         id: cosmetic.cosmetic.cosmetics_packId,
                         hash: await fileHash(cosmetic.cosmetic.cosmetics_pack.path)
                     });
                 }
-
+        
                 json.cosmetics.push({
                     id: cosmetic.cosmetic.identifier,
                     data: cosmetic.data
                 });
-            })
-
+            }
+        
             res.json(json);
         })
     }
