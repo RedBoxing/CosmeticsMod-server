@@ -32,9 +32,8 @@ export class UserController {
                     return res.json({});
                 }
                 
-                console.log("cosmetics_data: " + cosmetics_data);
                 cosmetics_data.forEach(async cosmetic => {
-                    console.log("cosmetics: " + cosmetic);
+                    console.log(cosmetic);
                     if(!json.cosmetics_packs.find(p => p.id === cosmetic.cosmetic.cosmetics_pack_id)) {
                         json.cosmetics_packs.push({
                             id: cosmetic.cosmetic.cosmetics_pack_id,
