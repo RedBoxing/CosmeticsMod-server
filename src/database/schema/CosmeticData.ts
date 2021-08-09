@@ -3,7 +3,7 @@ import { Cosmetic } from './Cosmetic';
 import { User } from './User';
 
 @Table
-export class CosmeticData extends Model {
+export class CosmeticData extends Model<CosmeticData> {
     @AllowNull(false)
     @ForeignKey(() => Cosmetic)
     @Column({ unique: true })

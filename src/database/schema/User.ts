@@ -3,7 +3,7 @@ import { Cosmetic } from './Cosmetic';
 import { CosmeticData } from './CosmeticData';
 
 @Table
-export class User extends Model {
+export class User extends Model<User> {
     @Unique
     @Column
     uuid!: string;

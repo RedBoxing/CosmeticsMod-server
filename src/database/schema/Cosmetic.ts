@@ -2,7 +2,7 @@ import { Model, Table, Column, ForeignKey, BelongsTo, PrimaryKey } from 'sequeli
 import { CosmeticsPack } from './CosmeticsPack';
 
 @Table
-export class Cosmetic extends Model {
+export class Cosmetic extends Model<Cosmetic> {
     @Column
     identifier!: string;
 
