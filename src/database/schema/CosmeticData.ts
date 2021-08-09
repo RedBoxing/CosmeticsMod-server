@@ -1,10 +1,11 @@
-import { Model, Table, Column, ForeignKey, DataType, BelongsTo, PrimaryKey } from 'sequelize-typescript';
+import { Model, Table, Column, ForeignKey, DataType, BelongsTo, PrimaryKey, Unique } from 'sequelize-typescript';
 import { Cosmetic } from './Cosmetic';
 import { User } from './User';
 
 @Table
 export class CosmeticData extends Model {
     @ForeignKey(() => Cosmetic)
+    @Unique
     @Column
     cosmetic_id!: number;
 
