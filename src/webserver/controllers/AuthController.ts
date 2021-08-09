@@ -137,8 +137,7 @@ export class AuthController {
         const user = await User.create({
             uuid: req.body.uuid,
             username: req.body.username,
-            password: hashedPassword,
-            cosmetics: Array<CosmeticData>()
+            password: hashedPassword
         });
 
         const token = jwt.sign({

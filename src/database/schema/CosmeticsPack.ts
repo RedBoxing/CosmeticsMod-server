@@ -3,7 +3,7 @@ import { Cosmetic } from './Cosmetic';
 import { User } from './User';
 
 @Table
-export class CosmeticsPack extends Model<CosmeticsPack> {
+export class CosmeticsPack extends Model {
     @Column
     path!: string;
 
