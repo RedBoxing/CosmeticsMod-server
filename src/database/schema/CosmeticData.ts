@@ -8,7 +8,7 @@ export class CosmeticData extends Model {
     @Column
     cosmetic_id!: number;
 
-    @BelongsTo(() => Cosmetic)
+    @BelongsTo(() => Cosmetic, 'cosmetic_id')
     cosmetic!: Cosmetic;
 
     @ForeignKey(() => User)

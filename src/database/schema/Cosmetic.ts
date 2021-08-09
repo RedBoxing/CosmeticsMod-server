@@ -16,6 +16,6 @@ export class Cosmetic extends Model {
     @Column
     cosmetics_pack_id!: number;
 
-    @BelongsTo(() => CosmeticsPack)
+    @BelongsTo(() => CosmeticsPack, 'cosmetics_pack_id')
     cosmetics_pack!: CosmeticsPack;
 }

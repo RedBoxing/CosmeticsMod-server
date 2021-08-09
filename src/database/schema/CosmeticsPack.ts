@@ -11,7 +11,7 @@ export class CosmeticsPack extends Model {
     @Column
     publisher_id!: number;
 
-    @BelongsTo(() => User)
+    @BelongsTo(() => User, 'publisher_id')
     publisher!: User;
 
     @HasMany(() => Cosmetic)
